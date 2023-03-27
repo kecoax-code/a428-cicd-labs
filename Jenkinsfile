@@ -7,6 +7,9 @@ node {
         stage('Test') {
             sh './jenkins/scripts/test.sh'
         }
+        stage('Manual Approval') {
+            input message: 'Lanjutkan ke tahap Deploy?' 
+        }
         stage('Deploy') {
             sh './jenkins/scripts/deliver.sh' 
             echo 'Kamu dapat access aplikasi ( http://139.180.140.132:3000 ) hanya 1 menit!'
